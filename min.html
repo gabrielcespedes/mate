@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- MathJax  -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- Tikz  -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <meta charset="UTF-8">
+    <title>Desigualdades de Holder - Schwarz - Minkowsky</title>
+</head>
+<body>
+<h4>Desigualdad de Minkowsky</h4>
+<p>Sea \(p\) número real tal que \(1 \leq p < \infty \; \).
+    Dados los vectores, sucesiones o funciones \(x, \;y \;  \) se tiene (dependiendo del caso):</p>
+<p> \[ \left ( \sum_{i=1}^{n} \left | x_i \pm  y_i \right |^p \right )^{1/p} \leq
+    \left ( \sum_{i=1}^{n} \left |x_i \right |^p \right )^{1/p} +
+    \left ( \sum_{i=1}^{n} \left |y_i \right |^p \right )^{1/p}  \]  </p>
+<p> \[ \left ( \sum_{i=1}^{\infty} \left | x_i \pm  y_i \right |^p \right )^{1/p} \leq
+    \left ( \sum_{i=1}^{\infty} \left |x_i \right |^p \right )^{1/p} +
+    \left ( \sum_{i=1}^{\infty} \left |y_i \right |^p \right )^{1/p}  \]  </p>
+<p>\[ \left ( \int_{\Omega} \left | x_i \pm y_i \right |^{p} \right )^{1/p} \leq
+    \left ( \int_{\Omega} \left |x_i \right |^p \right )^{1/p} +
+    \left ( \int_{\Omega} \left |y_i \right |^p \right )^{1/p}  \]</p>
+<p>Usando la siguiente notación de norma (dependiendo del caso):</p>
+<p> \[ \|x\|_p = \left ( \sum_{i=1}^{n} \left |x_i \right|^p \right )^{1/p},\;\;
+    \|x \|_p = \left ( \sum_{i=1}^{\infty} \left |x_i \right|^p \right )^{1/p}, \;\;
+    \|x \|_p = \left ( \int_{\Omega} \left |x_i \right|^p \right )^{1/p} \]</p>
+<p>Las desigualdades se resumen como:</p>
+<p> \[ \|x \pm y  \|_p \leq \| x\|_p + \|y \|_p   \]  </p>
+<em>Dem.</em>
+<p>El caso \(p = 1\) es directo. Para \(p>1\) usaremos la desigualdad de Holder para la demostración.
+    Consideremos primero la siguiente factorización (para
+    \(a, \; b \in \mathbb{R}\)).</p>
+<p>\[ (a + b)^p =  a(a+b)^{p - 1} + b(a+b)^{p - 1} \] </p>
+<p>Considerando \(a = |x_i| , \; b = |y_i|\) y aplicando suma tendremos:
+\[ \sum_{i=1}^{n} \left ( |x_i| + |y_i| \right )^p = \sum_{i=1}^{n} |x_i|\left ( |x_i|+|y_i|\right )^{p - 1} +
+   \sum_{i=1}^{n} |y_i|\left ( |x_i|+|y_i|\right )^{p - 1}   \]</p>
+<p>Aplicando desigualdad de Holder a ambas sumas de la derecha (considerando \(q\) tal que
+    \(p^{-1} + q^{-1} = 1 \) ):</p>
+<p> \[ \sum_{i=1}^{n} \left ( |x_i| + |y_i| \right )^p \leq
+    \|x\|_p \left ( \sum_{i=1}^{n} \left ( |x_i|+|y_i|\right )^{(p - 1)q} \right )^{1/q} +
+    \|y\|_p \left ( \sum_{i=1}^{n} \left ( |x_i|+|y_i|\right )^{(p - 1)q} \right )^{1/q}  \] </p>
+<p>Notemos que \( (p-1)q = p\). Dividiendo por
+    \( \left ( \sum_{i=1}^{n} \left ( |x_i|+|y_i|\right )^{p} \right )^{1/q} \) a ambos lados de la desigualdad: </p>
+<p> \[ \left ( \sum_{i=1}^{n} \left ( |x_i| + |y_i| \right )^p \right )^{1/p} \leq
+    \|x\|_p + \|y\|_p \]  </p>
+<p> \[ \therefore \|x \pm y \|_p \leq \|x\|_p + \|y\|_p \]  </p>
+<p>Nota: si \( \left ( \sum_{i=1}^{n} \left ( |x_i|+|y_i|\right )^{p} \right )^{1/q} = 0 \) se obtiene la
+desigualdad de forma trivial. \(\square\)</p>
+<div align="right">
+    <a class="nav-link" href="portfolio.html">Volver</a>
+</div>
+</body>
+</html>
