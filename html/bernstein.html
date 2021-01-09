@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- MathJax  -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- Tikz  -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <meta charset="UTF-8">
+    <title>Teorema de Bernstein</title>
+</head>
+<body>
+<h4>Teo. (Bernstein)</h4>
+<p>Sean los conjuntos \(X, Y \; \) tales que \(card(X) \leq card(Y)\; \) y \( \;card(Y)\leq card(X).\;\)
+Entonces \(card(X) = card(Y).\)</p>
+<em>Dem.</em>
+<p>Según la hipótesis, existen funciones \(f: X \rightarrow Y, \; g: Y \rightarrow X\;\)
+ambas inyectivas. Tenemos que demostrar que existe una función \(h: X \rightarrow Y\) biyectiva.</p>
+<p>Definamos ahora los siguientes conjuntos:
+\begin{align}
+    X_0 & = X \\
+    \widetilde{X}_1 &= g(Y)\\
+    \widetilde{X}_n &= g(f(\widetilde{X}_{n-1})),\; n=2,3,...\\
+    X_{n} &= g(f(X_{n-1})),\; n = 1,2, ... \\
+\end{align}
+
+</p>
+<p>A continuación se representa la situación anterior en un esquema en el que se aprecia las contenciones
+    de los conjuntos anteriores:</p>
+<div align="center">
+<script type="text/tikz">
+    \begin{tikzpicture}
+        \draw (0,0) rectangle (8,8);
+        \draw (12,0) rectangle (20,8);
+        \draw[->] (11,1) arc (45:135:1);
+        \draw[->] (9.5,7) arc (135:45:1);
+        \draw[color=black] (10.25,6.75) node {$f$};
+        \draw[color=black] (10.25,0.75) node {$g$};
+        \draw[color=black] (4,-0.25) node {$X$};
+        \draw[color=black] (16,-0.25) node {$Y$};
+        \draw (13,1) rectangle (19,7);
+        \draw (1,1) rectangle (7,7);
+        \draw (2,2) rectangle (6,6);
+        \draw (14,2) rectangle (18,6);
+        \draw (15,3) rectangle (17,5);
+        \draw (3,3) rectangle (5,5);
+        \draw (15.75,3.75) rectangle (16.25, 4.25);
+        \draw (16,4) node {$...$};
+        \draw (3.75,3.75) rectangle (4.25, 4.25);
+        \draw (4,4) node {$...$};
+        \draw (16,6.5) node {$f(X)$};
+        \draw (4,6.5) node {$\widetilde{X}_1$};
+        \draw (4,5.5) node {${X}_1$};
+        \draw (16,5.5) node {$f( \widetilde{X}_1 )$};
+        \draw (16,4.5) node {$f( {X}_1 )$};
+        \draw (4,5.5) node {${X}_1 $};
+        \draw (4,4.5) node {$ \widetilde{X}_2 $};
+    \end{tikzpicture}
+</script>
+</div>
+<p>Notemos lo siguiente. Si construimos una función \(k: X \rightarrow \widetilde{X}_1 \) biyectiva,
+tendremos que la función \(h: X \rightarrow Y \) dada por \(h(x) = g^{-1}(f(x)) \) será biyectiva,
+    con lo que finalizaríamos la demostración. </p>
+<p>Definiremos la función \( k: X \rightarrow X \). Previamente, notar que la composición \(g(f) \) es inyectiva.
+\[k(x) = \left \{ \begin{array}{ll}
+    g(f(x)) & \text{si } x \in X_n - \widetilde{X}_{n+1}, \; n = 0, 1, ... \\
+    x & \text{si } x \in \widetilde{X}_n - X_n, \; n = 1, 2, ... \\
+    x & \text{si } x \in \bigcap_{i = 1}^{\infty}X_{n}
+    \end{array} \right.
+    \]
+</p>
+<p>Esta función es inyectiva. Notemos también que actúa como función sobreyectiva desde el conjunto
+\(X_n - \widetilde{X}_{n+1}\) hacia \(X_{n+1} - \widetilde{X}_{n+2}, \; n=0,1,...\). Para clarificar mejor esto,
+    veamos que para cualquier entero no negativo \(n \), dado \(y \in  X_{n+1} - \widetilde{X}_{n+2}\), es decir,
+    \(y \in g(f(X_{n})) - g(f(\widetilde{X}_{n+1})),  \) existirá \(x \in X_{n} \) tal que \(y = g(f(X_n))\), con
+    \( x \not\in \widetilde{X}_{n+1}.\)
+</p>
+<p>Teniendo lo anterior en consideración, podemos verificar que la imagen de la función \(k \) es:</p>
+<p>\[ M =  \bigcup_{i=1}^{\infty}(X_n - \widetilde{X}_{n+1}) \cup
+    \bigcup_{i=1}^{\infty}(\widetilde{X}_n - X_{n}) \cup
+\bigcap_{i = 1}^{\infty}X_{n}  \]
+</p>
+<p>Ahora se cumplirá \(M = \widetilde{X}_1   \).      La contención \(M \subseteq \widetilde{X}_1 \) es directa
+    (por las contenciones representadas en el esquema). También se cumplirá \(M \supseteq \widetilde{X}_1.\) En
+    efecto, dado \(x \in \widetilde{X}_1 = g(Y)\), tendremos que existe \(y \in Y \), tal que \(x = g(y) \).
+</p>
+<p>Si \(y \not\in f(X)\), entonces \(y \in Y - f(X_0) \), es decir,
+    \(x \in \widetilde{X}_1 - X_1 \subseteq M. \) De lo contrario,
+si \(y \in f(X) \), podría ocurrir que \(y \not\in f(\widetilde{X}_1).\) Si fuera este el caso, entonces
+    \(x \in X_1 - \widetilde{X}_2 \subseteq M.\) Inductivamente, llegamos a que \(x \) pertenece a alguno de los
+    conjuntos presentes en las uniones que conforman a \(M \) o que esté en todos los conjuntos \(X_n\), es decir
+    en \(\bigcap_{i=1}^{\infty}X_n.\)
+</p>
+<p>De esta forma, \(k:X \rightarrow \widetilde{X}_1\) es la función biyectiva que buscábamos. \(\square\)</p>
+</body>
+</html>
